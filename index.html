@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Adivinanza de Números</title>
+    <link rel="icon" href="Adivina-jai.jpg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/estilo.css">
+    <link rel="stylesheet" href="./styles/inicio.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>¡ADIVINA EL NÚMERO!</h1>
+
+        <form id="empezar-form">
+            <fieldset>
+                <legend>Escoge el número límite</legend>
+                <div class="radios">
+                    <label>
+                        <input type="radio" name="limite" value="100" />
+                        100
+                    </label>
+
+                    <label>
+                        <input type="radio" name="limite" value="500" />
+                        500
+                    </label>
+
+                    <label>
+                        <input type="radio" name="limite" value="1000" checked />
+                        1000
+                    </label>
+                </div>
+                <div>
+                    <button type="submit" class="btn-empezar">Iniciar Juego</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <script>
+        const empezarForm = document.querySelector('#empezar-form');
+        empezarForm.addEventListener('submit', (evento) => {
+            evento.preventDefault()
+            let limite = empezarForm.elements.limite.value;
+            window.location.assign('/juego.html?limite=' + limite)
+        })
+    </script>
+    <script src="./scripts/index.js"></script>
+
+</body>
+
+</html>

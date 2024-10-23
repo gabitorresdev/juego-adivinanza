@@ -1,0 +1,40 @@
+* {
+  font-family: "Bangers", system-ui;
+  box-sizing: border-box;
+}
+
+body {
+  font-weight: 400;
+  background-color: #e8f2f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+button {
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #2b00c7;
+  color: rgb(252, 252, 252);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: 100;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+button[disabled] {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+#result {
+  margin-top: 20px;
+}
