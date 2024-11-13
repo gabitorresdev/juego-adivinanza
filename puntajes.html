@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego nuevo</title>
+    <link rel="icon" href="Adivina-jai.jpg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/menu.css">
+    <link rel="stylesheet" href="./styles/estilo.css">
+    <style>
+        .registro {
+            display: flex;
+            justify-content: space-between;
+            font-size: 2rem;
+            margin: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hero">
+        <div class="menu-btn">
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div class="menu">
+        <span class="btn-close" style="font-size: 62px;">&times;</span>
+        <ul class="links-container">
+            <li class="menu-title">MENU</li>
+            <li>
+                <a href="index.html" class="home">Inicio</a>
+            </li>
+            <li>
+                <a href="puntajes.html" class="scores">Puntajes</a>
+            </li>
+            <li>
+                <a href="" class="about">Nosotros</a>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="container">
+        <h1 style="font-size: 4rem;">Puntajes</h1>
+        <div id="puntajes"></div>
+    </div>
+    
+    <script src="./scripts/storage.js"></script>
+
+    <script>
+        const puntajes = puntajesStorage.traer()
+        const puntajesContainer = document.querySelector('#puntajes');
+        let innerText = '';
+        puntajes.reverse().forEach(registro => {
+            innerText += `<p class="registro">
+                <span>${registro.nombre}</span>
+                <span>${registro.puntaje}</span>
+            </p>`;
+        });
+
+        puntajesContainer.innerHTML = innerText;
+        
+    </script>
+    <script src="./scripts/menu.js"></script>
+</body>
+
+</html>

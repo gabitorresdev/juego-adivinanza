@@ -1,0 +1,106 @@
+.hero .menu-btn {
+  position: fixed;
+  top: 8%;
+  right: 5%;
+  cursor: pointer;
+  letter-spacing: 5px;
+  font-weight: bold;
+}
+
+.hero .menu-btn:hover span:nth-child(1) {
+  width: 70px;
+}
+
+.hero .menu-btn:hover span:nth-child(2) {
+  width: 65px;
+  margin-left: -10px;
+}
+
+.hero .menu-btn span {
+  display: block;
+  margin: 5px 0;
+  background: black;
+  width: 65px;
+  height: 5px;
+  transition: 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.hero .menu-btn span:nth-child(2) {
+  width: 40px;
+  transition-delay: 0.1s;
+}
+.menu:not(.active) {
+  opacity: 0;
+  visibility: hidden;
+}
+.menu {
+  transition: 0.52s;
+  z-index: 1111;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.98);
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.menu span {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  color: white;
+  font-size: 48px;
+  cursor: pointer;
+}
+.menu .links-container {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 100vh;
+}
+.menu .links-container a {
+  width: 100%;
+  height: 400px;
+  font-size: 4em;
+  text-decoration: none;
+  color: whitesmoke;
+  transition: 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+  position: relative;
+}
+.menu .links-container a:hover, .btn-close:hover {
+  color: #68e0f8;
+  font-size: 4.5em;
+  margin-left: 10px;
+}
+.menu .links-container a:before {
+  color: whitesmoke;
+}
+
+.menu .about:hover:after {
+  visibility: visible;
+  top: -475%;
+}
+.menu .about:hover:before {
+  visibility: visible;
+  right: -1150px;
+}
+
+.menu .contact:hover:after {
+  visibility: visible;
+  top: -575%;
+}
+.menu .contact:hover:before {
+  visibility: visible;
+  right: -1375px;
+}
+.menu .menu-title {
+  color: white;
+  font-size: 1em;
+  opacity: 0.4;
+  letter-spacing: 10px;
+}

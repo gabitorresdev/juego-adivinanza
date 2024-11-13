@@ -9,17 +9,41 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/menu.css">
     <link rel="stylesheet" href="./styles/estilo.css">
     <link rel="stylesheet" href="./styles/juego.css">
 </head>
 
 <body>
 
+    <div class="hero">
+        <div class="menu-btn">
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div class="menu">
+        <span class="btn-close" style="font-size: 62px;">&times;</span>
+        <ul class="links-container">
+            <li class="menu-title">MENU</li>
+            <li>
+                <a href="index.html" class="home">Inicio</a>
+            </li>
+            <li>
+                <a href="puntajes.html" class="scores">Puntajes</a>
+            </li>
+            <li>
+                <a href="" class="about">Nosotros</a>
+            </li>
+        </ul>
+    </div>
+
     <p id="contador">
         Intentos: <span>0</span>
     </p>
     <div class="container">
-        
+
         <div class="estado-container">
             <p id="estado"></p>
         </div>
@@ -45,88 +69,9 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const limite = parseInt(urlParams.get('limite'));
-        const estados = {
-            frio: '🥶 Frío 🥶',
-            tibio: '🫢 Tibio  🫢',
-            caliente: '🤑 Caliente  🤑',
-            gana: '🤩 ¡Ganaste!  🤩'
-        }
-        let rangos = [[30, 'caliente'], [100, 'tibio'], [200, 'frio']];
-
-        if (limite === 100) {
-            rangos = [[10, 'caliente'], [30, 'tibio'], [50, 'frio']];
-        } else if (limite === 500) {
-            rangos = [[10, 'caliente'], [50, 'tibio'], [150, 'frio']];
-        }
-
-        const numeros = document.querySelectorAll('.numeros button');
-        const elementoNumero = document.querySelector('#numero');
-        const intentarBtn = document.querySelector('#intentar');
-        const elementoContador = document.querySelector('#contador span');
-        const elementoEstado = document.querySelector('#estado');
-
-        let numeroActual = parseInt(elementoNumero.innerText);
-        const numeroObjetivo = Math.floor(Math.random() * limite) + 1;
-        let contador = 0;
-
-        numeros.forEach((btn) => {
-            btn.addEventListener('click', () => {
-                if (numeroActual === 0 || elementoNumero.innerText.length === 3) {
-                    elementoNumero.innerText = '';
-                }
-
-                elementoNumero.innerText += btn.innerText;
-                numeroActual = parseInt(elementoNumero.innerText);
-            })
-        })
-
-        const isBetween = (value, lower, upper) => value > lower && value < upper;
-        console.log(numeroObjetivo)
-
-        intentarBtn.addEventListener('click', () => {
-            if (numeroActual === 0) return;
-
-            if (numeroActual >= limite) {
-                alert('El número supera el límite seleccionado: ' + limite);
-                return;
-            }
-
-            contador++;
-
-            if (numeroActual === numeroObjetivo) {
-                elementoEstado.innerText = estados.gana;
-                intentarBtn.setAttribute('disabled', true)
-                
-                for (let i = 0; i < 3; i++) {
-                   setTimeout(() => {
-                       party.confetti(elementoEstado, {
-                           count: party.variation.range(20, 40)
-                       });
-                   }, i * 1000)
-                }
-                return
-            }
-
-            for (const [valor, estado] of rangos) {
-                const upper = numeroObjetivo + valor;
-                const lower = (numeroObjetivo - valor) < 0 ? 1 : numeroObjetivo - valor;
-
-                if (isBetween(numeroActual, lower, upper)) {
-                    elementoEstado.innerText = estados[estado];
-                    break;
-                } else {
-                    elementoEstado.innerText = estados.frio;
-                }
-            }
-
-            elementoContador.innerHTML = contador;
-            elementoNumero.innerText = numeroActual = 0;
-        })
-    </script>
-
+    <script src="./scripts/storage.js"></script>
+    <script src="./scripts/juego.js"></script>
+    <script src="./scripts/menu.js"></script>
 </body>
 
 </html>

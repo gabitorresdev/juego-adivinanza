@@ -19,7 +19,7 @@
   width: 100%;
 }
 
-#contador {
+#contador, .back-link {
   position: absolute;
   left: 5%;
   top: 5%;
